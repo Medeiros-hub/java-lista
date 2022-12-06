@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import javax.swing.JOptionPane;
-
 public class App {
 
 	static List list = new LinkedList();
@@ -36,6 +34,16 @@ public class App {
 		int pos = inputInt("Informe a posicao: ");
 		list.update(pos, num);
 	}
+
+	public static void searchOp() {
+		int value = inputInt("Insira o número que deseja pesquisar: ");
+		boolean out = list.search(value);
+		if (!out) {
+			outputText("\nO número não existe na lista!\n");
+		} else {
+			outputText("\nO número existe na lista!\n");
+		}
+	}
 	
 	public static void main(String[] args) {
 		
@@ -47,7 +55,10 @@ public class App {
 					+ "\n 1 - Inserir"
 					+ "\n 2 - Listar"
 					+ "\n 3 - Atualizar"
-					+ "\n 4 - Remover\n>> ");
+					+ "\n 4 - Remover"
+					+ "\n 5 - Buscar\n>> "
+				);
+				
 			if (option == 0) {
 				toBeContinue = false;
 				outputText("Teminando Aplicação...");
@@ -59,6 +70,8 @@ public class App {
 				updateOp();
 			} else if (option == 4) {
 				removeOp();
+			} else if (option == 5) {
+				searchOp();
 			} else {
 				outputText("Opção inválida...");
 			}

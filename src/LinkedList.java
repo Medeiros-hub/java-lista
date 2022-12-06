@@ -1,4 +1,3 @@
-
 public class LinkedList implements List {
 
 	private Node head;
@@ -23,8 +22,23 @@ public class LinkedList implements List {
 
 	@Override
 	public void remove(int value) {
-		// TODO Auto-generated method stub
-
+		if( this.head==null) { 
+			return ;
+		}
+		Node current=this.head, previous=null;
+		while(current != null && current.content!= value) {
+			previous = current;
+			current = current.next;
+		}
+		if(current==null) {
+			return;
+		}
+		if(previous==null) {
+			this.head = current.next;
+		}else {			
+			previous.next = current.next;
+		}
+		current.next = null;
 	}
 
 	@Override
@@ -78,5 +92,17 @@ public class LinkedList implements List {
 		}
 
 		return count;
+	}
+
+	public boolean search(int value) {
+		Node current = this.head;
+		while (current != null) {
+			if (current.content == value) {
+				return true;
+			}
+			current = current.next;
+		}
+
+		return false;
 	}
 }

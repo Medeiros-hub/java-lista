@@ -57,6 +57,18 @@ public class ArrayList implements List {
 		return quantity;
 	}
 
+	public boolean search(int value) {
+		int i = 0;
+		while (i < quantity) {
+			if (data[i] == value) {
+				return true;
+			}
+			i++;
+		}
+
+		return false;
+	}
+
 }
 
 
